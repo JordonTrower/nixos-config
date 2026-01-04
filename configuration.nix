@@ -62,6 +62,9 @@
     quickshell
     caelestia-shell.packages.${stdenv.hostPlatform.system}.default
     caelestia-cli.packages.${stdenv.hostPlatform.system}.default
+    kdePackages.kwallet
+    kdePackages.kwalletmanager
+    kdePackages.ksshaskpass
   ];
 
   programs.zsh.enable = true;
@@ -105,6 +108,15 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  programs.ssh = {
+    startAgent = true;
+    enableAskPassword = true;
+  };
+
+  environment.variables = {
+    SSH_ASKPASS_REQUIRE = "prefer";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
