@@ -1,0 +1,33 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+{
+  environment.systemPackages = with pkgs; [
+    vim
+    docker
+    lazygit
+    lazydocker
+    neovim
+    kitty
+    ghostty
+    tmux
+    git
+    ripgrep
+    clang
+    rustc
+    rustup
+    rustfmt
+    rust-analyzer
+    asdf-vm
+    prettierd
+    godot
+    lua
+    stylua
+    nixd
+    nixfmt-rfc-style
+  ];
+}
