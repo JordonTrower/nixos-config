@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -17,17 +15,25 @@
     tmux
     git
     ripgrep
-    clang
+    godot
+    #languages
+    asdf-vm
     rustc
     rustup
-    rustfmt
-    rust-analyzer
-    asdf-vm
-    prettierd
-    godot
+    dioxus-cli
     lua
+    clang
+    dotnet-sdk
+    # language servers / prettiers
     stylua
     nixd
+    prettierd
+    typescript-language-server
     nixfmt-rfc-style
+    clang-tools
+    rust-analyzer
+    rustfmt
+    csharp-ls
+    lua-language-server
   ];
 }
