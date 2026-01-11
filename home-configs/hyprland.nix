@@ -40,7 +40,7 @@
         "$mod, TAB, cyclenext, bringactivetotop"
         "$mod, W, killactive"
         #Applications
-        "$mod, RETURN, exec, $terminal -e zsh -c \"source ~/.zprofile && source ~/.zshrc && tmux; exit\""
+        "$mod, RETURN, exec, $terminal"
         "$mod, SPACE, exec, rofi -show drun"
         "$mod, F, exec, $terminal -e zsh -c \"source ~/.zprofile && source ~/.zshrc && yazi; exit\""
         "$mod, B, exec, floorp"

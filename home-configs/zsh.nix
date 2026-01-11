@@ -12,8 +12,15 @@
     };
     oh-my-zsh = {
       enable = true;
+      plugins = [
+        "tmux"
+        "sudo"
+        "docker"
+
+      ];
     };
     profileExtra = ''
+      ZSH_TMUX_AUTOSTART=true
       # Set yazi default editor to nvim
       export EDITOR=="nvim"
       export PATH="$HOME/.cargo/bin:$PATH"
