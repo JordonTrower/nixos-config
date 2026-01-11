@@ -58,7 +58,9 @@
     rofi
     btop
     hyprpaper
-    pulsemeeter
+    deepfilternet
+    easyeffects
+    gtk4
     quickshell
     caelestia-shell.packages.${stdenv.hostPlatform.system}.default
     caelestia-cli.packages.${stdenv.hostPlatform.system}.default

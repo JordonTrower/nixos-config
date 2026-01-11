@@ -1,8 +1,5 @@
 {
   config,
-  pkgs,
-  caelestia-shell,
-  inputs,
   ...
 }:
 
@@ -14,6 +11,7 @@
     ./home-configs/zsh.nix
     ./home-configs/yazi.nix
     ./home-configs/git.nix
+    ./home-configs/gtk.nix
   ];
 
   home.username = "josp";
