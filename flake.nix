@@ -23,12 +23,12 @@
     };
   };
   outputs =
-    inputs@{
-      self,
+    {
       nixpkgs,
       home-manager,
       caelestia-shell,
       caelestia-cli,
+      noctalia,
       ...
     }:
     {
@@ -36,6 +36,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./hardware-configs/laptop.nix
           ./nvidia-config.nix
           ./caelestia.nix
 
@@ -60,6 +61,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./hardware-configs/desktop.nix
           ./noctalia.nix
 
           home-manager.nixosModules.home-manager
@@ -75,7 +77,7 @@
         ];
 
         specialArgs = {
-          inherit inputs;
+          inherit noctalia;
           inherit caelestia-shell;
           inherit caelestia-cli;
         };
