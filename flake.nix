@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,9 +16,14 @@
       url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       home-manager,
@@ -30,14 +36,9 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./nvidia-config.nix
+          ./caelestia.nix
 
-          #				{
-          #					wayland.windowManager.hyprland = {
-          #						enable = true;
-          #						package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-          #						portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-          #					};
-          #				}
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -52,7 +53,31 @@
         specialArgs = {
           inherit caelestia-shell;
           inherit caelestia-cli;
-            
+        };
+      };
+
+      nixosConfigurations.jospNixDesktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./noctalia.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.josp = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+
+          }
+        ];
+
+        specialArgs = {
+          inherit inputs;
+          inherit caelestia-shell;
+          inherit caelestia-cli;
         };
       };
     };

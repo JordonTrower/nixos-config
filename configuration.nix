@@ -17,8 +17,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "jospNixLaptop"; # Define your hostname.
-
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -62,8 +60,6 @@
     easyeffects
     gtk4
     quickshell
-    caelestia-shell.packages.${stdenv.hostPlatform.system}.default
-    caelestia-cli.packages.${stdenv.hostPlatform.system}.default
   ];
 
   services.gnome.gnome-keyring.enable = true;
@@ -86,30 +82,12 @@
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
-  hardware.nvidia = lib.optionals (config.networking.hostName == "jospNixLaptop") {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-      nvidiaBusId = "PCI:01:0:0";
-      amdgpuBusId = "PCI:06:0:0";
-    };
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
