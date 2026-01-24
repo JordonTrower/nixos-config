@@ -12,6 +12,7 @@
     ./home-configs/yazi.nix
     ./home-configs/git.nix
     ./home-configs/gtk.nix
+    ./home-configs/noctalia.nix
   ];
 
   home.username = "josp";

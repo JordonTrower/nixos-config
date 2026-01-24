@@ -23,18 +23,18 @@
     };
   };
   outputs =
-    {
+    inputs@{
       nixpkgs,
       home-manager,
       caelestia-shell,
       caelestia-cli,
-      noctalia,
       ...
     }:
     {
       nixosConfigurations.jospNixLaptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { networking.hostName = "jospNixLaptop"; }
           ./configuration.nix
           ./hardware-configs/laptop.nix
           ./nvidia-config.nix
@@ -60,6 +60,7 @@
       nixosConfigurations.jospNixDesktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { networking.hostName = "jospNixDesktop"; }
           ./configuration.nix
           ./hardware-configs/desktop.nix
           ./noctalia.nix
@@ -77,7 +78,7 @@
         ];
 
         specialArgs = {
-          inherit noctalia;
+          inherit inputs;
           inherit caelestia-shell;
           inherit caelestia-cli;
         };
