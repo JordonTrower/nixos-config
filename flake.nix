@@ -66,6 +66,7 @@
           ./hardware-configs/desktop.nix
           ./noctalia.nix
           ./smb.nix
+          ./nfs.nix
 
           home-manager.nixosModules.home-manager
           {
