@@ -28,5 +28,6 @@
     floorp-bin
     firefox
     bolt-launcher
+    lutris
   ];
 }

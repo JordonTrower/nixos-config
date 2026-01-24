@@ -12,7 +12,6 @@
     ./home-configs/yazi.nix
     ./home-configs/git.nix
     ./home-configs/gtk.nix
-    ./home-configs/noctalia.nix
   ];
 
   home.username = "josp";
@@ -26,6 +25,9 @@
     };
     ".config/caelestia" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/caelestia";
+    };
+    ".config/noctalia" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/noctalia";
     };
   };
 }

@@ -1,10 +1,10 @@
 {
   description = "NixOS tutorial first flake help";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,13 +23,13 @@
     };
   };
   outputs =
-    inputs@{
+    {
       nixpkgs,
       home-manager,
       caelestia-shell,
       caelestia-cli,
       ...
-    }:
+    }@inputs:
     {
       nixosConfigurations.jospNixLaptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -52,8 +52,9 @@
           }
         ];
         specialArgs = {
-          inherit caelestia-shell;
+          inherit inputs;
           inherit caelestia-cli;
+          inherit caelestia-shell;
         };
       };
 
@@ -79,8 +80,6 @@
 
         specialArgs = {
           inherit inputs;
-          inherit caelestia-shell;
-          inherit caelestia-cli;
         };
       };
     };

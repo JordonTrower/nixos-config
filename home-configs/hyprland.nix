@@ -28,6 +28,7 @@
 
       exec-once = [
         "caelestia shell -d"
+        "noctalia-shell -d"
       ];
 
       bindm = [
