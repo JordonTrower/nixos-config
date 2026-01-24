@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -28,6 +27,10 @@
     floorp-bin
     firefox
     bolt-launcher
+    #games
+    wine
+    winetricks
+    protontricks
     lutris
   ];
 }

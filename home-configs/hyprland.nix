@@ -46,7 +46,7 @@
         #Applications
         "$mod, RETURN, exec, $terminal"
         "$mod, SPACE, exec, rofi -show drun"
-        "$mod, F, exec, $terminal -e zsh -c \"source ~/.zprofile && source ~/.zshrc && yazi; exit\""
+        "$mod, F, exec, $terminal -e zsh -c \"yazi; exit\""
         "$mod, B, exec, floorp"
         # Workspaces
         "$mod, SHIFT TAB, workspace, previous"
