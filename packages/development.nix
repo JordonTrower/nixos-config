@@ -29,7 +29,7 @@
     nixd
     prettierd
     typescript-language-server
-    nixfmt-rfc-style
+    nixfmt
     clang-tools
     rust-analyzer
     rustfmt

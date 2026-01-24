@@ -6,6 +6,7 @@
 }:
 
 {
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -23,7 +24,9 @@
       };
 
       monitor = [
-        "eDP-1,2560x1440@165,0x0,1.6"
+        # "eDP-1,2560x1440@165,0x0,1.6"
+        "DP-1,3840x2160@120,2560x0,1.2"
+        "HDMI-A-1,2560x1440@144,0x0,1"
       ];
 
       exec-once = [
