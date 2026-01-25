@@ -63,8 +63,13 @@
           ]
         ) 9
       ));
-
     };
+    extraConfig = ''
+      bind = $mod, O, submap, clean
+      submap = clean
+      bind = $mod, P, submap, reset
+      submap = reset
+    '';
   };
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
