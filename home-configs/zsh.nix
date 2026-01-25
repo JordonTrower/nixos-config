@@ -25,7 +25,7 @@
       export EDITOR=="nvim"
       export PATH="$HOME/.cargo/bin:$PATH"
       if [ "$(tty)" = "/dev/tty1" ]; then
-          exec hyprland
+          exec start-hyprland
       fi
     '';
   };
