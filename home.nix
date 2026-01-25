@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 
@@ -18,6 +19,16 @@
   home.homeDirectory = "/home/josp";
   programs.git.enable = true;
   home.stateVersion = "25.11";
+
+  services.udiskie = {
+    enable = true;
+    settings = {
+      program_options = {
+        file_manager = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.yazi}/bin/yazi";
+      };
+    };
+
+  };
 
   home.file = {
     ".config/nvim" = {
