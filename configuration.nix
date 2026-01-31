@@ -36,7 +36,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.josp = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "docker"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -60,6 +63,8 @@
     easyeffects
     gtk4
     quickshell
+    docker
+    docker-compose
   ];
 
   services.gnome.gnome-keyring.enable = true;
@@ -88,6 +93,10 @@
   };
 
   services.xserver.videoDrivers = [ "amdgpu" ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
