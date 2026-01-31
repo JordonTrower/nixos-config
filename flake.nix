@@ -21,6 +21,11 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -47,6 +52,7 @@
               useUserPackages = true;
               users.josp = import ./home.nix;
               backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
             };
 
           }
@@ -75,6 +81,7 @@
               useUserPackages = true;
               users.josp = import ./home.nix;
               backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
             };
 
           }
