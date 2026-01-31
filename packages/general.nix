@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -27,12 +28,17 @@
     floorp-bin
     firefox
     lact
+    audacity
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    wl-clipboard
     #games
     wine
     bolt-launcher
     winetricks
     protontricks
     lutris
+    vintagestory
+    prismlauncher
   ];
 
   systemd.services.lact = {
