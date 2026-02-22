@@ -15,6 +15,8 @@
       "nvidia-x11"
       "nvidia-settings"
       "nvidia-persistenced"
+      "spotify"
+      "vintagestory"
     ];
 
   programs.steam.enable = true;
@@ -31,6 +33,7 @@
     audacity
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     wl-clipboard
+    spotify
     #games
     wine
     bolt-launcher
@@ -39,7 +42,13 @@
     lutris
     vintagestory
     prismlauncher
+
+    kdePackages.kdenlive
+
+    clinfo
   ];
+
+  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
