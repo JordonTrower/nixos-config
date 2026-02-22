@@ -25,8 +25,8 @@
 
       monitor = [
         # "eDP-1,2560x1440@165,0x0,1.6"
-        "DP-1,3840x2160@120,2560x0,1.2"
-        "HDMI-A-1,2560x1440@144,0x0,1"
+        "HDMI-A-1,3840x2160@120,2560x0,1.2"
+        "DP-1,2560x1440@99.95,0x0,1"
       ];
 
       exec-once = [
@@ -50,6 +50,7 @@
         "$mod, B, exec, floorp"
         # Workspaces
         "$mod, SHIFT TAB, workspace, previous"
+        "SHIFT $mod, F, fullscreen"
       ]
       ++ (builtins.concatLists (
         builtins.genList (
