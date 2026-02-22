@@ -34,6 +34,9 @@
     ".config/nvim" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/nvim-config";
     };
+    ".config/opencode" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/opencode";
+    };
     ".config/caelestia" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/caelestia";
     };

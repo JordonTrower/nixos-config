@@ -92,6 +92,24 @@
         "type": "github"
       }
     },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1730504689,
+        "narHash": "sha256-hgmguH29K2fvs9szpq2r3pz2/8cJd2LPS+b4tfNFCwE=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "506278e768c2a08bec68eb62932193e341f55c90",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -132,6 +150,27 @@
         "type": "github"
       }
     },
+    "llama-cpp": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771707219,
+        "narHash": "sha256-vS5Ye3b8jwSKYVd+zPrKoPYNlIlbu3Mf5plqGsb+M7E=",
+        "owner": "ggml-org",
+        "repo": "llama.cpp",
+        "rev": "35715657cb2fa6eb302a2c1933ed10dbd0d8bc75",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ggml-org",
+        "repo": "llama.cpp",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1769018530,
@@ -146,6 +185,18 @@
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1730504152,
+        "narHash": "sha256-lXvH/vOfb4aGYyvFmZK/HlsNsr/0CVWlwYvo2rxJk3s=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/cc2f28000298e1269cea6612cd06ec9979dd5d7f.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/cc2f28000298e1269cea6612cd06ec9979dd5d7f.tar.gz"
       }
     },
     "noctalia": {
@@ -217,6 +268,7 @@
         "caelestia-shell": "caelestia-shell_2",
         "home-manager": "home-manager",
         "hyprland-contrib": "hyprland-contrib",
+        "llama-cpp": "llama-cpp",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia"
       }

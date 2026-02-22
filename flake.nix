@@ -26,6 +26,11 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    llama-cpp = {
+      url = "github:ggml-org/llama.cpp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -73,6 +78,7 @@
           ./noctalia.nix
           ./smb.nix
           ./nfs.nix
+          ./llama-cpp.nix
 
           home-manager.nixosModules.home-manager
           {

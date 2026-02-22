@@ -4,6 +4,7 @@
 }:
 
 {
+
   environment.systemPackages = with pkgs; [
     vim
     docker
@@ -35,5 +36,7 @@
     rustfmt
     csharp-ls
     lua-language-server
+    # :(
+    opencode
   ];
 }

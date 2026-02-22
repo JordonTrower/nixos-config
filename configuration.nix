@@ -28,11 +28,14 @@
   # OR
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   services.getty.autologinUser = "josp";
-
+  nix.optimise.automatic = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.josp = {
     isNormalUser = true;
@@ -50,6 +53,8 @@
     xwayland.enable = true;
     #    withUWSM = true;
   };
+
+  security.rtkit.enable = true;
 
   services.upower.enable = true;
   services.udisks2.enable = true;
@@ -112,10 +117,18 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [
+  #   80
+  #   443
+  #   8080
+  # ];
+  # networking.firewall.allowedUDPPorts = [
+  #   80
+  #   443
+  #   8080
+  # ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
