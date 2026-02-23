@@ -5,10 +5,10 @@
 }:
 {
   imports = [
-    ../../home-configs/ghostty.nix
-    ../../home-configs/yazi.nix
-    ../../home-configs/zsh.nix
-    ../../home-configs/git.nix
+    ../home-configs/ghostty.nix
+    ../home-configs/yazi.nix
+    ../home-configs/zsh.nix
+    ../home-configs/git.nix
   ];
 
   home.username = "josp";
@@ -33,5 +33,10 @@
     ".config/opencode" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/opencode";
     };
+  };
+
+  programs.ssh = {
+    enable = true;
+    controlMaster = true;
   };
 }

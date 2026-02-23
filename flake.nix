@@ -54,8 +54,7 @@
           inherit system;
           modules = [
             { networking.hostName = name; }
-            (import (./server-hosts + "/" + name + "/configuration.nix"))
-            { inherit inputs; }
+            (./server-hosts + "/${name}/configuration.nix")
             home-manager.nixosModules.home-manager
             {
               home-manager = {

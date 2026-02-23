@@ -75,7 +75,6 @@
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gcr-ssh-agent.enable = true;
   services.gvfs.enable = true;
-  services.gvfs.udisks2Support = true;
 
   programs.zsh.enable = true;
   users.users.josp.shell = pkgs.zsh;
@@ -96,7 +95,6 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    owner = "root";
   };
 
   hardware.graphics = {

@@ -13,8 +13,6 @@
   };
 
   # Basic server configuration
-  networking.hostName = "josp-server";
-  services.getty.autologinUser = "josp";
   users.users.josp.shell = pkgs.zsh;
   programs.zsh.enable = true;
 
