@@ -40,61 +40,98 @@
       caelestia-cli,
       ...
     }@inputs:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      # Get list of server directories
+      serverDirs = lib.attrNames (builtins.readDir ./server-hosts);
+      # Filter to only include directories that start with "jospNix"
+      serverHosts = lib.filter (name: lib.hasPrefix "jospNix" name) serverDirs;
+      # Create nixosConfigurations for each server
+      serverConfigs = lib.genAttrs serverHosts (
+        name:
+        lib.nixosSystem {
+          inherit system;
+          modules = [
+            { networking.hostName = name; }
+            (import (./server-hosts + "/" + name + "/configuration.nix"))
+            { inherit inputs; }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.josp = import ./server-hosts/server-home.nix;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
+
+              };
+
+            }
+          ];
+          specialArgs = { inherit inputs; };
+        }
+      );
+    in
     {
-      nixosConfigurations.jospNixLaptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          { networking.hostName = "jospNixLaptop"; }
-          ./configuration.nix
-          ./hardware-configs/laptop.nix
-          ./nvidia-config.nix
-          ./caelestia.nix
+      nixosConfigurations = lib.recursiveUpdate serverConfigs {
+        jospNixLaptop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            { networking.hostName = "jospNixLaptop"; }
+            ./configuration.nix
+            ./hardware-configs/laptop.nix
+            ./nvidia-config.nix
+            ./caelestia.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.josp = import ./home.nix;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit inputs; };
-            };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.josp = import ./home.nix;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
 
-          }
-        ];
-        specialArgs = {
-          inherit inputs;
-          inherit caelestia-cli;
-          inherit caelestia-shell;
+              };
+
+            }
+          ];
+          specialArgs = {
+            inherit inputs;
+            inherit caelestia-cli;
+            inherit caelestia-shell;
+          };
         };
-      };
 
-      nixosConfigurations.jospNixDesktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          { networking.hostName = "jospNixDesktop"; }
-          ./configuration.nix
-          ./hardware-configs/desktop.nix
-          ./noctalia.nix
-          ./smb.nix
-          ./nfs.nix
-          ./llama-cpp.nix
+        jospNixDesktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            { networking.hostName = "jospNixDesktop"; }
+            ./configuration.nix
+            ./hardware-configs/desktop.nix
+            ./noctalia.nix
+            ./smb.nix
+            ./nfs.nix
+            ./llama-cpp.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.josp = import ./home.nix;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit inputs; };
-            };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.josp = import ./home.nix;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
 
-          }
-        ];
+              };
 
-        specialArgs = {
-          inherit inputs;
+            }
+          ];
+
+          specialArgs = {
+            inherit inputs;
+          };
         };
       };
     };

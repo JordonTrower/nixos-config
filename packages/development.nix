@@ -36,6 +36,15 @@
     rustfmt
     csharp-ls
     lua-language-server
+    # New formatters
+    black
+    isort
+    shfmt
+    # New LSP servers
+    json-lsp
+    pyright
+    bashls
+    eslint
     # :(
     opencode
   ];
