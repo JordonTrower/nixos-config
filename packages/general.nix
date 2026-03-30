@@ -50,32 +50,4 @@
     openssl
   ];
 
-  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
-
-  hardware.amdgpu.opencl.enable = true;
-  systemd.tmpfiles.rules =
-    let
-      rocmEnv = pkgs.symlinkJoin {
-        name = "rocm-combined";
-        paths = with pkgs.rocmPackages; [
-          rocblas
-          hipblas
-          clr
-        ];
-      };
-    in
-    [
-      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-    ];
-
-  systemd.services.lact = {
-    description = "AMDGPU Control Daemon";
-    after = [ "multi-user.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.lact}/bin/lact daemon";
-    };
-    enable = true;
-  };
-  hardware.amdgpu.overdrive.enable = true;
 }
