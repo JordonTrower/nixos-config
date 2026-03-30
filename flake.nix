@@ -113,6 +113,7 @@
             ./smb.nix
             ./nfs.nix
             ./llama-cpp.nix
+            ./packages/amd.nix
 
             home-manager.nixosModules.home-manager
             {

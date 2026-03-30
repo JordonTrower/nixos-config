@@ -40,12 +40,8 @@
     black
     isort
     shfmt
+    jsonfmt
     # New LSP servers
-    json-lsp
-    pyright
-    bashls
-    eslint
-    # :(
-    opencode
+    bash-language-server
   ];
 }

@@ -32,7 +32,7 @@ with pkgs;
   nix
   nixFlakes.nixFlakes
 
-  opencode
+  qwen-code
 
   # Shell
   zsh

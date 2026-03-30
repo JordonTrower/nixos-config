@@ -2,11 +2,11 @@
 {
   imports = [ ./nginx-server.nix ];
 
-  # Use the same user configuration as other hosts
   users.users.josp = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
+      "docker"
       "nginx"
     ];
     packages = with pkgs; [ tree ];
@@ -35,6 +35,17 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.auto-optimise-store = true;
+
+  # Logging
+  services.logrotate.enable = true;
+  services.journalctl.enable = true;
+
+  # Fail2ban for SSH protection
+  services.fail2ban = {
+    enable = true;
+    logPath = "/var/log/auth.log";
+  };
 
   # State version
   system.stateVersion = "25.11";

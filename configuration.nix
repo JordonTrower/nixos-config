@@ -75,6 +75,7 @@
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gcr-ssh-agent.enable = true;
   services.gvfs.enable = true;
+  services.avahi.enable = true;
 
   programs.zsh.enable = true;
   users.users.josp.shell = pkgs.zsh;
@@ -88,6 +89,9 @@
     "flakes"
   ];
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
@@ -96,13 +100,12 @@
     automatic = true;
     dates = "weekly";
   };
+  services.fstrim.enable = true;
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
-
-  services.xserver.videoDrivers = [ "amdgpu" ];
 
   virtualisation.docker = {
     enable = true;

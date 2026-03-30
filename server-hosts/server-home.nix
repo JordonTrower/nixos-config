@@ -30,8 +30,8 @@
     ".config/nvim" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/nvim-config";
     };
-    ".config/opencode" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/opencode";
+    ".qwen" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/configs/qwen";
     };
   };
 

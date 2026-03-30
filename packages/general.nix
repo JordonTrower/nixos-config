@@ -34,6 +34,7 @@
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     wl-clipboard
     spotify
+    pavucontrol
     #games
     wine
     bolt-launcher
@@ -46,9 +47,26 @@
     kdePackages.kdenlive
 
     clinfo
+    openssl
   ];
 
   hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+
+  hardware.amdgpu.opencl.enable = true;
+  systemd.tmpfiles.rules =
+    let
+      rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+          rocblas
+          hipblas
+          clr
+        ];
+      };
+    in
+    [
+      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+    ];
 
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
