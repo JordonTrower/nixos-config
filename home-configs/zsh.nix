@@ -9,6 +9,7 @@
     enable = true;
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ~/configs/nixos-config/";
+      nfu = "sudo nix flake update --flake ~/configs/nixos-config/"
     };
     oh-my-zsh = {
       enable = true;

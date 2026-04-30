@@ -19,6 +19,7 @@
   home.homeDirectory = "/home/josp";
   programs.git.enable = true;
   home.stateVersion = "25.11";
+  services.easyeffects.enable = true;
 
   services.udiskie = {
     enable = true;

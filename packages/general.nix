@@ -35,6 +35,7 @@
     wl-clipboard
     spotify
     pavucontrol
+    fuzzel
     #games
     wine
     bolt-launcher
@@ -43,6 +44,7 @@
     lutris
     vintagestory
     prismlauncher
+    xivlauncher
 
     kdePackages.kdenlive
 
