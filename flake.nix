@@ -81,7 +81,9 @@
             ./configuration.nix
             ./hardware-configs/laptop.nix
             ./nvidia-config.nix
-            ./caelestia.nix
+            ./noctalia.nix
+            ./smb.nix
+            ./nfs.nix
 
             home-manager.nixosModules.home-manager
             {
