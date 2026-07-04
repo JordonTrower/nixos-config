@@ -17,7 +17,13 @@
       "nvidia-persistenced"
       "spotify"
       "vintagestory"
+      "ventoy"
     ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.12"
+    "electron-39.8.10"
+  ];
 
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
@@ -36,6 +42,8 @@
     spotify
     pavucontrol
     fuzzel
+    localsend
+    ventoy-full
     #games
     wine
     bolt-launcher
@@ -47,6 +55,8 @@
     xivlauncher
 
     kdePackages.kdenlive
+    kdePackages.dolphin
+    kdePackages.kcalc
 
     clinfo
     openssl

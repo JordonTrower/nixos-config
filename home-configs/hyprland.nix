@@ -9,6 +9,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     settings = {
       "$mod" = "ALT";
       "$terminal" = "ghostty";
@@ -31,7 +32,7 @@
 
       exec-once = [
         "caelestia shell -d"
-        "noctalia-shell -d"
+        "noctalia -d"
       ];
 
       bindm = [

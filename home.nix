@@ -18,7 +18,7 @@
   home.username = "josp";
   home.homeDirectory = "/home/josp";
   programs.git.enable = true;
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
   services.easyeffects.enable = true;
 
   services.udiskie = {
